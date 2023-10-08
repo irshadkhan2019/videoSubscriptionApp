@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Signup</h2>
+    {% include 'alerts.html' %}
+ <!--  -->
+    <!-- new -->
+    <form  action="{% url 'authentication:signup' %}" method="post">
+        {% csrf_token %} 
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" placeholder="Username" name="username" class="form-control" id="username">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" placeholder="Email or Phone" name="email" class="form-control" id="email">
+         </div>  
+
+        <div class="form-group">
+            <label for="password1">Password</label>
+            <input type="password" placeholder="Password" id="password1" class="form-control" name="password1">
+        </div>
+
+        <div class="form-group">
+            <label for="password2">Confirm Password</label>
+            <input type="password" placeholder="Confrom Password" id="password2" class="form-control" name="password2">
+        </div>
+        <button type="submit" class="btn btn-primary">Signup</button>
+        
+        <a href="{% url 'authentication:login' %}" >I have already account</a>
+    </form>
+</div>
+{% endblock %}
+

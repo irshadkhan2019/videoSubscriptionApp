@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap4',
+    'authentication',
+
 ]
 
 MIDDLEWARE = [
@@ -125,7 +128,22 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
+# MEdia files
+
+MEDIA_URL = "media/"
+MEDIA_ROOT = BASE_DIR / "media"
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+
+# message tags
+from django.contrib.messages import constants as messages
+
+MESSAGE_TAGS = {
+    messages.ERROR: "danger",
+    messages.SUCCESS: "success",
+    messages.INFO: "primary",
+    messages.WARNING: "warning",
+}
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
