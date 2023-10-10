@@ -5,9 +5,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 # Create your views here.
-# @login_required(login_url='login')
-# def HomePage(request):
-#     return render (request,'home.html')
 
 def Signup(request):
     if request.method=='POST':
@@ -43,7 +40,7 @@ def Login(request):
         if user is not None:
             login(request,user)
             messages.success(request, "Logged in successfully")
-            return redirect('home')
+            return redirect('course:course')
         else:
             # return HttpResponse ("Username or Password is incorrect!!!")
             messages.error(request, "Username or Password is incorrect!!")
