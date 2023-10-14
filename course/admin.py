@@ -8,7 +8,6 @@ class CourseAdmin(admin.ModelAdmin):
     list_filter = ()
     fieldsets = ()
 
-
 class VideoAdmin(admin.ModelAdmin):
     list_display=("course","title","video_url","video_file")
     filter_horizontal = ()
