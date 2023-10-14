@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Video Detail: {{ course.title }}</h1>
+
+    <div class="row">
+        <div class="col-md-8">
+            <!--  video player section  -->
+            {% if video.video_url %}
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="{{ video.video_url }}" allowfullscreen></iframe>
+                </div>
+            {% elif video.video_file %}
+                <video width="100%" height="auto" controls>
+                    <source src="{{ video.video_file.url }}" type="{{ video.video_file.content_type }}">
+                    Your browser does not support the video tag.
+                </video>
+            {% else %}
+                <p>No video available for this course.</p>
+            {% endif %}
+        </div>
+        <div class="col-md-4">
+            <!-- section for the list of video titles -->
+            <h2>Video Titles</h2>
+            <ul class="list-group">
+                {% for video in videos %}
+                    <a href="{% url 'course:course_detail' course.pk video.pk %}">
+                        <li class="list-group-item">{{ video.title }}</li>
+                    </a>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

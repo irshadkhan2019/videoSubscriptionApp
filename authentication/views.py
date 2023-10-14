@@ -13,8 +13,8 @@ def Signup(request):
         pass1=request.POST.get('password1')
         pass2=request.POST.get('password2')
 
+        # matching conditions
         if pass1!=pass2:
-            # return HttpResponse("Your password and conform password are not Same!!")
              messages.warning(request, "password and conform password must be same")  
         if username=="" or email=="" or pass1=="":
             messages.warning(request, "Please fill all fields")  
@@ -24,7 +24,6 @@ def Signup(request):
                 messages.error(request, 'A user with this email address already exists.')
 
         else:
-
             my_user=User.objects.create_user(username,email,pass1)
             my_user.save()
             messages.success(request, "Your account has been registered successfully")
@@ -42,7 +41,6 @@ def Login(request):
             messages.success(request, "Logged in successfully")
             return redirect('course:course')
         else:
-            # return HttpResponse ("Username or Password is incorrect!!!")
             messages.error(request, "Username or Password is incorrect!!")
 
     return render (request,'login.html')
