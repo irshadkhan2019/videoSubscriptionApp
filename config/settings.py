@@ -149,3 +149,6 @@ MESSAGE_TAGS = {
 }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+RZP_KEY_ID=config('RZP_KEY_ID')
+RZP_KEY_SECRET=config('RZP_KEY_SECRET')

@@ -1,8 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container mt-5">
-    <h2>Buy this course</h2>
-</div>
+ <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        {% if course.image %}
+                             <img src="{{ course.image.url }}" alt="{{ course.title }} Image" class="card-img-top">
+                        {% endif %}
+                        <h3 class="card-title">{{course.title}}</h3>
+                        <p class="card-text">{{course.description}}</p>
+                        <p class="card-text">Price: {{course.price}} Rs</p>
+                        
+                        <form id="checkout-form">
+                            <button type="button" id="rzp-button" class="btn btn-success btn-block">Buy Now with Razorpay</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
