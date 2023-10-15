@@ -13,7 +13,8 @@
                         <p class="card-text">{{course.description}}</p>
                         <p class="card-text">Price: {{course.price}} Rs</p>
                         
-                        <form id="checkout-form">
+                        <form id="checkout-form" method="post" action="{% url 'payments:buy_course' course.pk  %}" >
+                            {% csrf_token %}
                             <button type="button" id="rzp-button" class="btn btn-success btn-block">Buy Now with Razorpay</button>
                         </form>
                     </div>
