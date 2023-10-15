@@ -17,9 +17,12 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf.urls.static import static
 from django.conf import settings
+
+# consfigure site urls 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("authentication.urls", namespace="authentication")),
     path("", include("course.urls", namespace="course")),
+    path("", include("payments.urls", namespace="payments")),
     
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

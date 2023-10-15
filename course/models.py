@@ -30,4 +30,4 @@ class UserCourses(models.Model):
 
     # display name at admin panel
     def __str__(self):
-        return self.user
+        return self.user.username
