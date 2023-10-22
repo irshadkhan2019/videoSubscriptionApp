@@ -83,7 +83,7 @@ def course_payments(request,course_id):
 
         return JsonResponse(response)
 
-
+# show success page after successfull purchase of course
 @login_required(login_url='authentication:login')
 def success(request,course_id): 
     course = get_object_or_404(Course, pk=course_id)
