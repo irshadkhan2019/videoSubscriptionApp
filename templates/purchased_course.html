@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>My Courses</h1>
+    <p>Total Purchased Courses: {{ course_count }} </p>
+    <!-- Display purchased courses -->
+    <div class="row">
+        {% for course in purchased_courses %}
+            <div class="col-md-4">
+                <a href="{% url 'course:course_detail' course.purchased_courses.pk 0 %}">
+                    <div class="card mb-4">
+                        {% if course.purchased_courses.image %}
+                            <img src="{{ course.purchased_courses.image.url }}" alt="{{ course.purchased_courses.title }} Image" class="card-img-top">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ course.purchased_courses.title }}</h5>
+                            <p class="card-text">{{ course.purchased_courses.description }}</p>
+                            <p class="card-text">
+                                Price: ${{ course.purchased_courses.price }}
+                                {% if course.purchased_courses.is_free %}
+                                    <span class="badge badge-success">Free</span>
+                                {% else %}
+                                    <span class="badge badge-warning">Paid</span>
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+  
+</div>
+{% endblock %}
+

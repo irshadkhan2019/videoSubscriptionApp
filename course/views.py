@@ -37,3 +37,13 @@ def course_detail(request,course_id,video_id=None):
         # If the course is paid and the user hasn't purchased it, let payments app handle it
         return redirect('payments:buy_course', course_id=course_id)
 
+# Show users their purchased courses
+@login_required(login_url='authentication:login')
+def purchased_course(request):
+    purchased_courses=UserCourses.objects.filter(user=request.user)
+    course_count = purchased_courses.count()
+    context={
+        'purchased_courses':purchased_courses,
+        'course_count':course_count,
+    }
+    return render(request, 'purchased_course.html',context) 

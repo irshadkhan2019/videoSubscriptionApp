@@ -15,7 +15,7 @@ def Signup(request):
 
         # matching conditions
         if pass1!=pass2:
-             messages.warning(request, "password and conform password must be same")  
+             messages.warning(request, "password and confirm password must be same")  
         if username=="" or email=="" or pass1=="":
             messages.warning(request, "Please fill all fields")  
         if User.objects.filter(username=username).exists():
