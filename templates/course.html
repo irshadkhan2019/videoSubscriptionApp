@@ -7,30 +7,49 @@
     <!-- Display courses -->
     <div class="row">
         {% for course in courses %}
-            <div class="col-md-4">
-                <a href="{% url 'course:course_detail' course.pk 0 %}">
-                    <div class="card mb-4">
-                        {% if course.image %}
-                            <img src="{{ course.image.url }}" alt="{{ course.title }} Image" class="card-img-top">
-                        {% endif %}
-                        <div class="card-body">
-                            <h5 class="card-title">{{ course.title }}</h5>
-                            <p class="card-text">{{ course.description }}</p>
-                            <p class="card-text">
-                                Price: ${{ course.price }}
-                                {% if course.is_free %}
-                                    <span class="badge badge-success">Free</span>
-                                {% else %}
-                                    <span class="badge badge-warning">Paid</span>
-                                {% endif %}
-                            </p>
-                        </div>
+        <div class="col-md-4">
+            <a href="{% url 'course:course_detail' course.pk 0 %}">
+                <div class="card mb-4">
+                    {% if course.image %}
+                        <img src="{{ course.image.url }}" alt="{{ course.title }} Image" class="card-img-top">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ course.title }}</h5>
+                        <p class="card-text">{{ course.description }}</p>
+                        <p class="card-text">
+                            Price: ${{ course.price }}
+                            {% if course.is_free %}
+                                <span class="badge badge-success">Free</span>
+                            {% else %}
+                                <span class="badge badge-warning">Paid</span>
+                            {% endif %}
+                        </p>
                     </div>
-                </a>
-            </div>
+                </div>
+            </a>
+        </div>
         {% endfor %}
     </div>
   
+    <!-- Pagination links -->
+    <div class="pagination justify-content-center">
+        <span class="step-links">
+            {% if courses.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ courses.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current-page">
+                Page {{ courses.number }} of {{ courses.paginator.num_pages }}.
+            </span>
+
+            {% if courses.has_next %}
+                <a href="?page={{ courses.next_page_number }}">next</a>
+                <a href="?page={{ courses.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
 </div>
 {% endblock %}
+
 

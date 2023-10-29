@@ -1,15 +1,26 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from django.contrib.auth.decorators import login_required
 from .models import Course,Video,UserCourses
+from django.core.paginator import Paginator
+from .utils import generate_top_purchased_courses
+
 
 # show course page only to logged in users
 @login_required(login_url='authentication:login')
 def course_list(request):
     courses = Course.objects.all()
     course_count = courses.count()
-    
+
+    # Number of items to display per page
+    items_per_page = 3
+    paginator = Paginator(courses, items_per_page)
+
+    # Get the current page number from the request's GET parameters
+    page_number = request.GET.get('page')
+    page = paginator.get_page(page_number)
+
     context = {
-        "courses": courses,
+        "courses": page,
         "course_count": course_count,
     }
     return render(request, 'course.html', context)
@@ -47,3 +58,8 @@ def purchased_course(request):
         'course_count':course_count,
     }
     return render(request, 'purchased_course.html',context) 
+
+# view to display top 5 purchased courses
+def top_purchased_courses(request):
+    image_url = generate_top_purchased_courses()
+    return render(request, 'top_courses.html', {'image_url': image_url})

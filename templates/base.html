@@ -8,6 +8,7 @@
     <script src="{% static 'js/bootstrap.js' %}"></script>
     <script src="{% static 'js/modernizr.js' %}"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 </head>
 <body>
     <!-- Displaying navbar to logged in users -->
@@ -25,7 +26,7 @@
                         <a class="nav-link" href="{% url 'course:purchased_course' %}">My Courses</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Top Buys</a>
+                        <a class="nav-link" href="{% url 'course:top_purchased_courses' %}">Top Buys</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'authentication:logout' %}">Logout</a>
