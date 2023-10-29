@@ -17,7 +17,6 @@ def generate_top_purchased_courses():
     # Extract course names and their respective purchase counts
     course_names = [course.title for course in top_courses]
     purchase_counts = [course.num_purchases for course in top_courses]
-    print(course_names,purchase_counts)
 
     # Create a bar graph
     plt.bar(course_names, purchase_counts)
