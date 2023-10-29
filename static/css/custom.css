@@ -43,3 +43,17 @@
     animation-timing-function: ease-out;
 
 }
+h1 {
+    background-image: linear-gradient(to right,#ffb900,#ff7730);
+    display: inline-block;
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: .2rem;
+    transition: all .5s;
+    cursor: pointer;
+
+}
+
+

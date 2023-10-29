@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container mt-5">
     <h1>List of Courses</h1>
-    <p>Total Courses: {{ courses.count }}</p>
+    <p>Total Courses: {{ course_count }}</p>
     <!-- Display courses -->
     <div class="row">
         {% for course in courses %}
