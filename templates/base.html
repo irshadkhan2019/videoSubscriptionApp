@@ -45,8 +45,33 @@
     <div class="container">
         {% block content %}{% endblock %}
     </div>
-    <footer>
-        footer
+    <footer class="footer bg-dark text-light py-3 fixed-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <!-- Placeholder for your app logo -->
+                    <img src="{% static 'logo/video.jpg' %}" alt="App Logo" class="img-fluid" style="max-width: 150px; max-height: 100px;">
+                </div>
+    
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p>
+                        We provide best affordable Courses and free courses currently in trending.
+                    </p>
+                </div>
+    
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <address>
+                        <p>
+                            <span> khanirshad2019@gmail.com</span><br>
+                            <span> suchitmeshram1@gmail.com</span> 
+                        </p>
+                        <p>Phone: (+91) 8484911358</p>
+                    </address>
+                </div>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
