@@ -17,7 +17,7 @@
                             <h5 class="card-title">{{ course.purchased_courses.title }}</h5>
                             <p class="card-text">{{ course.purchased_courses.description }}</p>
                             <p class="card-text">
-                                Price: ${{ course.purchased_courses.price }}
+                                Price: Rs {{ course.purchased_courses.price }}
                                 {% if course.purchased_courses.is_free %}
                                     <span class="badge badge-success">Free</span>
                                 {% else %}

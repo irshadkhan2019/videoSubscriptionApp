@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from course.models import Course
 
-# Create your models here.
+# Payment model to store payment related info done by a user
 class Payment(models.Model):
     PAYMENT_METHOD = (
         ("RazorPay", "RazorPay"),  

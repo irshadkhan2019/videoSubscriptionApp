@@ -2,7 +2,24 @@
 
 {% block content %}
 <div class="container mt-5">
-    <h2>{{course.title}} bought successfully</h2>
-</div>
+        <div class="alert alert-success">
+            <h4 class="alert-heading">Congratulations!</h4>
+            <p>You have successfully purchased the course.</p>
+        </div>
+        <p class="heading-secondary">Course Details:</p>
+
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <ul style="list-style: none;">
+                    <li><strong>Course Title:</strong> {{ course.title }}</li>
+                    <li><strong>Description:</strong> {{ course.description }}</li>
+                    <li><strong>Price:</strong>{{ course.price }} Rs</li>
+                </ul>
+                <a href="{% url 'course:purchased_course' %}" class="btn btn-primary">Go to My courses</a>
+            </div>
+            
+          </div>
+       
+    </div>
 {% endblock %}
 

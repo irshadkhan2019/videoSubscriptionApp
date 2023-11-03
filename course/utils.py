@@ -14,7 +14,6 @@ def generate_top_purchased_courses():
     top_courses = course_purchases.order_by('-num_purchases')[:5]
     print(top_courses)
 
-    # Extract course names and their respective purchase counts
     course_names = [course.title for course in top_courses]
     purchase_counts = [course.num_purchases for course in top_courses]
 
