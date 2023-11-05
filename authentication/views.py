@@ -3,33 +3,20 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from .forms import RegistrationForm
 
-# Create your views here.
-
+# To Register user
 def Signup(request):
-    if request.method=='POST':
-        username=request.POST.get('username')
-        email=request.POST.get('email')
-        pass1=request.POST.get('password1')
-        pass2=request.POST.get('password2')
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            return redirect('authentication:login')  # Redirect to login page upon successful registration
+    else:
+        form = RegistrationForm()
+    
+    return render(request, 'signup.html', {'form': form})
 
-        # matching conditions
-        if pass1!=pass2:
-             messages.warning(request, "password and confirm password must be same")  
-        if username=="" or email=="" or pass1=="":
-            messages.warning(request, "Please fill all fields")  
-        if User.objects.filter(username=username).exists():
-                messages.error(request, 'A user with this username already exists.')
-        elif User.objects.filter(email=email).exists():
-                messages.error(request, 'A user with this email address already exists.')
-
-        else:
-            my_user=User.objects.create_user(username,email,pass1)
-            my_user.save()
-            messages.success(request, "Your account has been registered successfully")
-            return redirect('authentication:login')
-        
-    return render (request,'signup.html')
 
 def Login(request):
     if request.method=='POST':

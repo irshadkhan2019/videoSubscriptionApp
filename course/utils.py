@@ -9,6 +9,10 @@ import os
 # Function to generate top 5 purcahsed courses as bar plt.
 def generate_top_purchased_courses():
     course_purchases = Course.objects.annotate(num_purchases=Count('usercourses'))
+
+    if not course_purchases.exists():
+        # If there are no courses with purchases, return None or an appropriate response
+        return None
    
     # Sort the courses by the number of purchases in descending order and select the top 5
     top_courses = course_purchases.order_by('-num_purchases')[:5]

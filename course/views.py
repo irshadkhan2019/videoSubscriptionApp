@@ -62,4 +62,7 @@ def purchased_course(request):
 # view to display top 5 purchased courses
 def top_purchased_courses(request):
     image_url = generate_top_purchased_courses()
+    # If no purchased course 
+    if image_url is None:
+        return render(request, 'top_courses.html', {'image_url': 'None'})
     return render(request, 'top_courses.html', {'image_url': image_url})
