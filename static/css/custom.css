@@ -1,4 +1,4 @@
-/* green color text with skew animation */
+
 .heading-secondary {
     text-transform: uppercase;
     font-weight: 700;
@@ -43,6 +43,7 @@
     animation-timing-function: ease-out;
 
 }
+
 h1 {
     background-image: linear-gradient(to right,#ffb900,#ff7730);
     display: inline-block;
@@ -55,7 +56,4 @@ h1 {
     cursor: pointer;
 
 }
-
-
-
 

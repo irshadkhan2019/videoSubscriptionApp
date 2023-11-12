@@ -1,7 +1,7 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from django.contrib.auth.decorators import login_required
 from .models import Course,Video,UserCourses
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator,EmptyPage, PageNotAnInteger
 from .utils import generate_top_purchased_courses
 
 
@@ -53,8 +53,17 @@ def course_detail(request,course_id,video_id=None):
 def purchased_course(request):
     purchased_courses=UserCourses.objects.filter(user=request.user)
     course_count = purchased_courses.count()
+
+    # Number of items to display per page
+    items_per_page = 3
+    paginator = Paginator(purchased_courses, items_per_page)
+
+    # Get the current page number from the request's GET parameters
+    page_number = request.GET.get('page')
+    page = paginator.get_page(page_number)
+    
     context={
-        'purchased_courses':purchased_courses,
+        'purchased_courses':page,
         'course_count':course_count,
     }
     return render(request, 'purchased_course.html',context) 

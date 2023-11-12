@@ -1,13 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container mt-5">
-    <h2>Login</h2>
-    {% include 'alerts.html' %}
- <!--  -->
-    <form method="post" action="{% url 'authentication:login' %}">
-       
+<div class="container mt-5" style=" min-height: 74vh;display: flex;align-items: center; justify-content: center; ">
+    <form method="post" action="{% url 'authentication:login' %}" style="min-width: 30vw;">
+        <h3 class="heading-secondary">Login</h3>
+        {% include 'alerts.html' %}
         {% csrf_token %} 
+        <!-- form fields -->
         <div class="form-group">
             <label for="username">Username</label>
             <input type="text" placeholder="Enter Username" class="form-control" id="username" name="username">

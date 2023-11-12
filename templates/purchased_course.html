@@ -2,18 +2,27 @@
 
 {% block content %}
 <div class="container mt-5">
-    <h1>My Courses</h1>
-    <p>Total Purchased Courses: {{ course_count }} </p>
+    <div class="btn btn-primary" style="margin-bottom: 12px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
+        </svg>
+        <!-- Go back to previous page -->
+        <input type=button class="btn btn primary" value="Go back" onClick="javascript:history.go(-1);">
+    </div>
+    <div>
+        <h1>My Courses</h1>
+        <p>Total Purchased Courses: {{ course_count }} </p>
+    </div>
     <!-- Display purchased courses -->
     <div class="row">
         {% for course in purchased_courses %}
             <div class="col-md-4">
                 <a href="{% url 'course:course_detail' course.purchased_courses.pk 0 %}">
-                    <div class="card mb-4">
+                    <div class="card mb-4" style="width: 18rem;">
                         {% if course.purchased_courses.image %}
                             <img src="{{ course.purchased_courses.image.url }}" alt="{{ course.purchased_courses.title }} Image" class="card-img-top">
                         {% endif %}
-                        <div class="card-body">
+                        <div class="card-body" style="color: #444;">
                             <h5 class="card-title">{{ course.purchased_courses.title }}</h5>
                             <p class="card-text">{{ course.purchased_courses.description }}</p>
                             <p class="card-text">
@@ -30,7 +39,37 @@
             </div>
         {% endfor %}
     </div>
-  
+
+    <!-- Pagination links   -->
+    <div class="pagination justify-content-center">
+            <ul class="pagination">
+    
+                {% if purchased_courses.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page=1">&laquo; first</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ purchased_courses.previous_page_number }}">previous</a>
+                    </li>
+                {% endif %}
+    
+                <li class="page-item disabled">
+                    <span class="page-link">
+                        Page {{ purchased_courses.number }} of {{ purchased_courses.paginator.num_pages }}.
+                    </span>
+                </li>
+    
+                {% if purchased_courses.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ purchased_courses.next_page_number }}">next</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ purchased_courses.paginator.num_pages }}">last &raquo;</a>
+                    </li>
+                {% endif %}
+    
+            </ul>
+    </div>
 </div>
 {% endblock %}
 
