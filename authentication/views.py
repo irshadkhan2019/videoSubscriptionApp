@@ -17,16 +17,15 @@ def Signup(request):
     
     return render(request, 'signup.html', {'form': form})
 
-
 def Login(request):
     if request.method=='POST':
         username=request.POST.get('username')
         pass1=request.POST.get('pass')
         user=authenticate(request,username=username,password=pass1)
         if user is not None:
-            login(request,user)
-            messages.success(request, "Logged in successfully")
-            return redirect('course:course')
+            login(request,user) 
+            messages.success(request, "Logged in successfully "+username)
+            return redirect('course:course') # Redirect to course page upon successful login
         else:
             messages.error(request, "Username or Password is incorrect!!")
 

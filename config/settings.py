@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'authentication',
     'course',
     'payments',
+    'embed_video',
 
 ]
 
@@ -152,3 +153,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 RZP_KEY_ID=config('RZP_KEY_ID')
 RZP_KEY_SECRET=config('RZP_KEY_SECRET')
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https') 

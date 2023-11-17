@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from embed_video.fields import EmbedVideoField
 
 class Course(models.Model):
     title = models.CharField(max_length=100)
@@ -16,7 +17,7 @@ class Course(models.Model):
 class Video(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
-    video_url = models.URLField(blank=True, null=True)  # URL to the video
+    video_url = EmbedVideoField(blank=True, null=True)  # URL to the youtube video
     video_file = models.FileField(upload_to='course_videos/', blank=True, null=True)  # Dynamic upload path    
 
     # display name at admin panel

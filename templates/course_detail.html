@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load embed_video_tags %}
 
 {% block content %}
 <div class="container mt-5">
@@ -17,7 +18,7 @@
             <!--  video player section  -->
             {% if video.video_url %}
                 <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src="{{ video.video_url }}" allowfullscreen></iframe>
+                      {% video video.video_url 'small' %}
                 </div>
             {% elif video.video_file %}
                 <video width="100%" height="auto" controls>

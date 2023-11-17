@@ -2,6 +2,7 @@
 
 {% block content %}
 <div class="container mt-5">
+    {% include 'alerts.html' %}
     <h1>List of Courses</h1>
     <p>Total Courses: {{ course_count }}</p>
     <!-- Display courses -->
@@ -17,7 +18,11 @@
                         <h5 class="card-title">{{ course.title }} Course</h5>
                         <p class="card-text">{{ course.description }}</p>
                         <p class="card-text">
-                            Price: Rs {{ course.price }}
+                            <!-- Display price only for paid courses -->
+                            {% if not course.is_free %}
+                                 Price: Rs {{ course.price }}
+                            {% endif %}
+
                             {% if course.is_free %}
                                 <span class="badge badge-success">Free</span>
                             {% else %}
