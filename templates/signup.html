@@ -4,6 +4,7 @@
 <div class="container mt-5" style=" min-height: 74vh;min-width: 50vw;display: flex;align-items: center; justify-content: center;">
     <form  action="{% url 'authentication:signup' %}" method="post" style="min-width: 30vw">
       <h3 class="heading-secondary" style="display: block;">Sign up</h3>
+        {% include 'alerts.html' %}
         <!-- Display form validation errors -->
           {% if form.errors %}
           <div class="alert alert-danger">
@@ -29,7 +30,7 @@
         {{ form.password2.label_tag }}
         {{ form.password2 }}
         
-        <div class=" mt-3">
+        <div class="mt-3">
             <button type="submit" class="btn btn-primary mr-4">Register</button>
             <a href="{% url 'authentication:login' %}" >I have already account</a>
         </div>

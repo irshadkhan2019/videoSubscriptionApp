@@ -26,7 +26,6 @@ def generate_top_purchased_courses():
     plt.xlabel('Courses')
     plt.ylabel('Number of Purchases')
     plt.title('Top 5 Most Purchased Courses')
-    plt.xticks(rotation=45, ha="right")  
 
     # Define the path to save the image in the media folder
     media_root = settings.MEDIA_ROOT

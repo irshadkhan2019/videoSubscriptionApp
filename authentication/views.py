@@ -11,12 +11,14 @@ def Signup(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             user = form.save()
+            messages.success(request, "Registration successfully")
             return redirect('authentication:login')  # Redirect to login page upon successful registration
     else:
         form = RegistrationForm()
     
     return render(request, 'signup.html', {'form': form})
 
+# To login
 def Login(request):
     if request.method=='POST':
         username=request.POST.get('username')

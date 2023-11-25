@@ -4,7 +4,6 @@ from django.contrib.auth.decorators import login_required
 from course.models import Course,UserCourses
 from .models import Payment
 from config import settings
-
 import time  
 import razorpay
 

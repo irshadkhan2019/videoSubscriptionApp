@@ -66,9 +66,9 @@ var options = {
       sendTransaction(transaction_id,status,payment_method,amount);
     },
     "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
-        "name": "irshad khan", //your customer's name
-        "email": "khanirshad2019@gmail.com",
-        "contact": "8104800479" //Provide the customer's phone number for better conversion rates 
+        "name": "{{request.user.username}}", //your customer's name
+        "email": "{{request.user.email}}",
+        "contact": " " //Provide the customer's phone number for better conversion rates 
     },
     "notes": {
         "address": "Razorpay Corporate Office"
